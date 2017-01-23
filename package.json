@@ -1,0 +1,23 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node cli/ttt-cli.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IceFractal/tic-tac-toe.git"
+  },
+  "author": "Joe Denea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IceFractal/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/IceFractal/tic-tac-toe#readme",
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
