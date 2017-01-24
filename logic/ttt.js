@@ -10,9 +10,14 @@ module.exports.init = () => {
 module.exports.board = () => (board);
 
 module.exports.input = (loc) => {
-  board[loc] = turn;
-  if (turn === 1) turn++;
-  else turn--;
+  if (!board[loc]) {
+    board[loc] = turn;
+    if (turn === 1) turn++;
+    else turn--;
+    return board;
+  }
   return board;
 };
+
+module.exports.turn = () => (turn);
 
