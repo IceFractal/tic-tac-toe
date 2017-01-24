@@ -1,5 +1,7 @@
 /* eslint-disable no-nested-ternary */
-const ttt = require('../logic/ttt');
+const Board = require('../logic/ttt');
+
+const board = new Board();
 
 const writeBoard = (b) => {
   process.stdout.write(
@@ -12,14 +14,11 @@ const writeBoard = (b) => {
 |${b[6] ? b[6] === 1 ? 'X' : 'O' : ' '}  z| ${b[7] ? b[7] === 1 ? 'X' : 'O' : ' '}  x| ${b[8] ? b[8] === 1 ? 'X' : 'O' : ' '}  c|
 ------------------
 
-${ttt.turn() === 1 ? 'X' : 'O'}'s Turn:
+${board.getTurn() === 1 ? 'X' : 'O'}'s Turn:
 `);
 };
 
-const board = ttt.init();
-
-writeBoard(board);
-// writeBoard([1, 2, 0, 0, 0, 0, 2, 1, 0]);
+writeBoard(board.get());
 
 const letToIndex = {
   q: 0,
@@ -36,5 +35,5 @@ const letToIndex = {
 process.stdin.setEncoding('utf8');
 process.stdin.on('data', (letter) => {
   const lett = letter[0];
-  if (typeof letToIndex[lett] !== 'undefined') writeBoard(ttt.input(letToIndex[lett]));
+  if (typeof letToIndex[lett] !== 'undefined') writeBoard(board.move(letToIndex[lett]));
 });

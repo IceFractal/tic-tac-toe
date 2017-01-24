@@ -1,25 +1,29 @@
 const assert = require('assert');
-const ttt = require('../logic/ttt');
+const Board = require('../logic/ttt');
 
-const board = (new Array(9)).fill(0);
+const board = new Board();
+
+const blank = (new Array(9)).fill(0);
 
 describe('Tic Tac Toe', () => {
   beforeEach(() => {
-    ttt.init();
+    board.reset();
   });
 
   it('should generate a blank board', () => {
-    assert.deepEqual(ttt.init(), board);
+    assert.deepEqual(board.get(), blank);
   });
 
   it('should take input', () => {
-    const result = board.slice();
+    const result = blank.slice();
     result[2] = 1;
-    assert.deepEqual(ttt.input(2), result);
+    assert.deepEqual(board.move(2), result);
   });
 
-  it('should reset the board on init', () => {
-    ttt.input(2);
-    assert.deepEqual(ttt.init(), board);
+  it('should reset the board and turn', () => {
+    board.move(2);
+    board.reset();
+    assert.deepEqual(board.get(), blank);
+    assert.deepEqual(board.getTurn(), 1);
   });
 });

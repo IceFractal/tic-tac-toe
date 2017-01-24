@@ -1,23 +1,32 @@
 
-let board = (new Array(9)).fill(0);
-let turn = 1; // 1 = X, 2 = O
-
-module.exports.init = () => {
-  board = (new Array(9)).fill(0);
-  return board;
-};
-
-module.exports.board = () => (board);
-
-module.exports.input = (loc) => {
-  if (!board[loc]) {
-    board[loc] = turn;
-    if (turn === 1) turn++;
-    else turn--;
-    return board;
+class Board {
+  constructor() {
+    this.board = (new Array(9)).fill(0);
+    this.turn = 1;
   }
-  return board;
-};
 
-module.exports.turn = () => (turn);
+  get() {
+    return this.board;
+  }
 
+  getTurn() {
+    return this.turn;
+  }
+
+  reset() {
+    this.board = (new Array(9)).fill(0);
+    this.turn = 1;
+  }
+
+  move(index) {
+    if (!this.board[index]) {
+      this.board[index] = this.turn;
+      if (this.turn === 1) this.turn++;
+      else this.turn--;
+      return this.board;
+    }
+    return this.board;
+  }
+}
+
+module.exports = Board;
